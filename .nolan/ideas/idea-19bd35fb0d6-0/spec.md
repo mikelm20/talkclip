@@ -91,7 +91,7 @@ Knowledge workers, writers, and anyone who frequently captures quick thoughts or
 ## Technical Constraints
 - Must use free speech-to-text solution (Web Speech API via Chromium/WebKit, or local Ollama model)
 - No cloud service subscriptions or API costs
-- Must work as desktop app, with a very minimal 
+- Must work as desktop app, with a very minimal over
 - Accuracy is prioritized—prefer solutions with good recognition quality over speed alone
 
 ## Out of Scope (v1)
