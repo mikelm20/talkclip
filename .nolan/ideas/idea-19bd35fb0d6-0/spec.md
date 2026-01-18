@@ -1,98 +1,107 @@
 # TalkClip
 
 ## Overview
-TalkClip is a lightweight desktop utility that turns spoken words into clipboard-ready text in seconds. Press a global hotkey, speak your thoughts, and the app automatically transcribes, cleans up grammar and punctuation, and copies the result to your clipboard—ready to paste anywhere without any manual steps.
+TalkClip is a lightweight desktop voice recorder that instantly transcribes speech to text and copies it to your clipboard. It's designed for capturing thoughts at the speed of speech—press a hotkey, speak, and your words are ready to paste anywhere within seconds.
 
 ## Problem
-Ideas vanish faster than you can type them. Whether it's a quick thought you need to capture before it slips away or a lengthy message that would take forever to type out, the friction between thinking and documenting kills productivity. Existing voice tools require navigating menus, reviewing text, and manually copying—TalkClip eliminates all of that overhead.
+Ideas slip away when you can't capture them fast enough. Typing long prompts or notes interrupts your flow and breaks concentration. TalkClip eliminates the friction between thinking and capturing by letting you speak naturally while the app handles transcription, grammar cleanup, and clipboard management automatically.
 
 ## Target User
-People who think faster than they type and paste into multiple destinations throughout their day—note-takers dropping ideas into Obsidian or Notion, professionals firing off Slack messages and emails, anyone who wants their voice to become text without breaking their workflow.
+Knowledge workers, writers, and anyone who frequently captures quick thoughts or composes messages throughout their day. They work across multiple applications—notes apps like Obsidian and Notion, messaging platforms like Slack and email—and need a universal input method that's faster than typing but produces clean, paste-ready text.
 
 ## Core Features
 
 ### Feature 1: Global Hotkey Activation
-**Description**: Launch the recorder from anywhere on your desktop with a single keyboard shortcut (default: Cmd+Shift+V or equivalent). No need to switch windows or click through menus—the recorder appears instantly as a small overlay.
+**Description**: Launch TalkClip instantly from anywhere on the desktop with a keyboard shortcut (default: Cmd+Shift+V or equivalent). The app appears as a compact floating window ready to record, minimizing context-switching and keeping you in your workflow.
 
 **Acceptance Criteria**:
-- [ ] Pressing the configured hotkey launches the recorder overlay from any application
-- [ ] Recorder appears within 200ms of hotkey press
-- [ ] Overlay does not steal focus from the current application beyond what's necessary
-- [ ] Hotkey is configurable in settings
+- [ ] Hotkey works regardless of which application has focus
+- [ ] Window appears within 200ms of hotkey press
+- [ ] Window is positioned consistently (centered or near cursor)
+- [ ] Pressing hotkey while TalkClip is open focuses the existing window
 
 **Priority**: P0
 
-### Feature 2: Real-Time Speech Transcription
-**Description**: As you speak, text appears live in the recorder window. This immediate visual feedback confirms the app is capturing your words and helps you track your thoughts as they flow.
+### Feature 2: Voice Recording with Visual Feedback
+**Description**: A simple recorder interface with a prominent microphone button and audio waveform visualization. Users see their audio input is being captured in real-time, providing confidence the recording is working.
 
 **Acceptance Criteria**:
-- [ ] Transcribed text appears in the UI as words are spoken, not after completion
-- [ ] Transcription latency is under 500ms from speech to displayed text
-- [ ] Works for recordings of any length (quick one-liners to multi-minute explanations)
-- [ ] Uses free speech-to-text engine (Web Speech API via Chromium/WebKit or local Whisper model)
+- [ ] Single click/tap starts recording
+- [ ] Waveform animates in response to voice input volume
+- [ ] Recording duration is displayed
+- [ ] Visual indicator clearly distinguishes recording vs idle state
 
 **Priority**: P0
 
 ### Feature 3: Automatic Stop Detection
-**Description**: The app detects when you've finished speaking and automatically ends the recording—no button press required. This enables truly hands-free operation: speak and walk away.
+**Description**: TalkClip intelligently detects when you've finished speaking and automatically stops recording. No need to manually press stop—just speak your thought and the app handles the rest, making the capture-to-clipboard flow nearly instantaneous.
 
 **Acceptance Criteria**:
 - [ ] Recording stops automatically after detecting 1.5-2 seconds of silence
-- [ ] User can also manually stop by pressing the hotkey again or clicking a stop button
-- [ ] Visual indicator shows the app recognized speech has ended
-- [ ] No accidental stops during natural pauses within sentences
+- [ ] Silence threshold is calibrated to avoid cutting off natural pauses mid-sentence
+- [ ] Manual stop button remains available as fallback
+- [ ] Auto-stop triggers transcription immediately
 
 **Priority**: P0
 
-### Feature 4: Grammar and Punctuation Auto-Fix
-**Description**: Raw speech transcription often lacks proper punctuation and contains grammatical quirks. TalkClip automatically cleans up the text—adding periods, commas, and fixing common errors—so the output is paste-ready without manual editing.
+### Feature 4: Real-Time Speech-to-Text Transcription
+**Description**: As you speak, your words appear as text in the preview area below the recorder. The transcription uses a free, accurate speech recognition engine—either browser-based Web Speech API or a local model via Ollama—prioritizing accuracy without subscription costs.
 
 **Acceptance Criteria**:
-- [ ] Periods and commas are added at appropriate sentence boundaries
-- [ ] Common transcription errors are corrected (e.g., "gonna" → "going to" where appropriate)
-- [ ] Capitalization is applied correctly for sentence starts and proper nouns
-- [ ] Processing happens automatically before clipboard copy, with no user intervention
+- [ ] Text appears progressively during recording (streaming transcription)
+- [ ] Transcription completes within 2 seconds of recording end
+- [ ] Supports mixed-length recordings from quick phrases to multi-minute explanations
+- [ ] Works offline if using local Ollama model
 
 **Priority**: P0
 
-### Feature 5: Instant Clipboard Copy
-**Description**: The moment transcription and cleanup complete, the text is automatically copied to your system clipboard. No review screen, no confirmation dialog—just immediate availability for pasting.
+### Feature 5: Automatic Grammar and Punctuation Cleanup
+**Description**: Raw speech-to-text output is automatically polished before copying. The app adds proper punctuation, fixes common grammar issues, and ensures the text is ready for professional contexts without manual editing.
 
 **Acceptance Criteria**:
-- [ ] Text is copied to clipboard within 100ms of processing completion
-- [ ] Visual confirmation (brief flash or indicator) shows copy succeeded
-- [ ] Recorder overlay auto-dismisses after successful copy
-- [ ] Clipboard contains only the final processed text (not intermediate transcription)
+- [ ] Punctuation (periods, commas, question marks) is added appropriately
+- [ ] Capitalization follows standard sentence rules
+- [ ] Common filler words ("um", "uh") are removed
+- [ ] Grammar corrections don't alter the speaker's intended meaning
 
 **Priority**: P0
 
-### Feature 6: Minimal Recorder UI
-**Description**: A compact, unobtrusive overlay showing a waveform or recording indicator plus the live transcription text. Appears when activated, disappears when done—designed to stay out of your way.
+### Feature 6: Instant Clipboard Copy
+**Description**: Once transcription and cleanup complete, the text is automatically copied to the system clipboard. No review step, no extra clicks—the moment TalkClip finishes processing, you can immediately Cmd+V into any application.
 
 **Acceptance Criteria**:
-- [ ] Overlay is small enough to not obstruct primary work area
-- [ ] Shows clear recording state (recording, processing, complete)
-- [ ] Displays live transcription text as it's captured
-- [ ] Can be repositioned by dragging (position persists between sessions)
+- [ ] Text is copied to clipboard automatically after processing
+- [ ] Visual confirmation shows copy succeeded (brief toast or icon change)
+- [ ] Clipboard content is plain text (no formatting artifacts)
+- [ ] Works with all standard paste targets (notes, browsers, messaging apps)
+
+**Priority**: P0
+
+### Feature 7: Compact Floating Window UI
+**Description**: The interface stays minimal and unobtrusive—a small floating window with just the essential controls. It shows the microphone button, waveform, and transcription preview without overwhelming screen real estate.
+
+**Acceptance Criteria**:
+- [ ] Window dimensions are compact (roughly 300-400px wide)
+- [ ] Window floats above other applications
+- [ ] Window can be dismissed quickly (Escape key or click outside)
+- [ ] Transcription text area scrolls for longer recordings
 
 **Priority**: P1
 
 ## Technical Constraints
-- Must use free speech-to-text solution—no paid API keys required for basic operation
-- Primary options: Web Speech API (Chromium/WebKit built-in) or local Whisper model via Ollama
-- Accuracy is prioritized over speed when conflicts arise
-- Desktop app built with Tauri (given the existing project structure)
-- Must support macOS and Linux at minimum
+- Must use free speech-to-text solution (Web Speech API via Chromium/WebKit, or local Ollama model)
+- No cloud service subscriptions or API costs
+- Must work as a Tauri desktop application (cross-platform potential)
+- Accuracy is prioritized—prefer solutions with good recognition quality over speed alone
 
 ## Out of Scope (v1)
 - History of past transcriptions
-- Cloud sync or backup
-- Multiple language support (English-only for v1)
-- Text formatting options (bullet points, markdown)
-- Integration with specific apps (direct paste into Notion, etc.)
-- Voice commands or wake words
-- Review/edit step before clipboard copy
-- Custom vocabulary or voice training
+- Manual editing of transcribed text before copy
+- Multiple language support (English only for v1)
+- Custom hotkey configuration UI
+- Audio file export or save functionality
+- Integration with specific apps (Notion API, Slack API, etc.)
+- User accounts or cloud sync
 
 ## UI Reference
-See minimal app preview for UI patterns and interactions. The recorder component should follow the compact overlay pattern with a waveform visualization and text display area as prototyped.
+See minimal app preview for UI patterns and interactions. The recorder uses a centered circular microphone button with animated waveform bars, and transcribed text appears in a text area below the controls.
