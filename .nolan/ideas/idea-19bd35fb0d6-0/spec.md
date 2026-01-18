@@ -55,7 +55,7 @@ Knowledge workers, writers, and anyone who frequently captures quick thoughts or
 
 **Priority**: P0
 
-### Feature 5: Automatic Grammar and Punctuation Cleanup (can use text to text local AI like claude code with haiku)
+### Feature 5: Automatic Grammar and Punctuation Cleanup (can use text to text local AI like claude ode haiku or opencode headless with 
 **Description**: Raw speech-to-text output is automatically polished before copying. The app adds proper punctuation, fixes common grammar issues, and ensures the text is ready for professional contexts without manual editing.
 
 **Acceptance Criteria**:
