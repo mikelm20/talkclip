@@ -95,7 +95,6 @@ Knowledge workers, writers, and anyone who frequently captures quick thoughts or
 - Accuracy is prioritized—prefer solutions with good recognition quality over speed alone
 
 ## Out of Scope (v1)
-- History of past transcriptions
 - Manual editing of transcribed text before copy
 - Multiple language support (English only for v1)
 - Custom hotkey configuration UI
