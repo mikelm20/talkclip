@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+vendor/
+target/
+
+# Build outputs
+dist/
+build/
+.next/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Nolan worktrees (managed by Nolan)
+.nolan/
