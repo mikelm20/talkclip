@@ -44,19 +44,21 @@ Knowledge workers, writers, and anyone who frequently captures quick thoughts or
 
 **Priority**: P0
 
-### Feature 4: Real-Time Speech-to-Text Transcription
-**Description**: As you speak, your words appear as text in the preview area below the recorder. The transcription uses a free, accurate speech recognition engine—either browser-based Web Speech API or a local model via Ollama—prioritizing accuracy without subscription costs.
+### Feature 4: Offline Speech-to-Text Transcription
+**Description**: As you speak, your words appear as text in the preview area below the recorder. The transcription uses a local speech recognition model via Ollama (e.g., Whisper) to ensure reliable offline operation without network dependencies. This avoids "network error" failures that occur with browser-based Web Speech API when internet connectivity is unavailable or unreliable.
 
 **Acceptance Criteria**:
-- [ ] Text appears progressively during recording (streaming transcription)
+- [ ] Text appears progressively during recording (streaming transcription) when supported by the model
 - [ ] Transcription completes within 2 seconds of recording end
 - [ ] Supports mixed-length recordings from quick phrases to multi-minute explanations
-- [ ] Works offline if using local Ollama model
+- [ ] Works fully offline using local Ollama model—no network connection required
+- [ ] App gracefully handles Ollama service unavailability with clear error messaging and setup instructions
+- [ ] No dependency on Web Speech API or other network-based speech recognition services
 
 **Priority**: P0
 
-### Feature 5: Automatic Grammar and Punctuation Cleanup (can use text to text local AI like claude ode haiku or opencode headless with free glm 4.7 or grok fast) and also ollama if thats the speech to text ai source.
-**Description**: Raw speech-to-text output is automatically polished before copying. The app adds proper punctuation, fixes common grammar issues, and ensures the text is ready for professional contexts without manual editing.
+### Feature 5: Automatic Grammar and Punctuation Cleanup
+**Description**: Raw speech-to-text output is automatically polished before copying. The app adds proper punctuation, fixes common grammar issues, and ensures the text is ready for professional contexts without manual editing. Uses local AI models via Ollama (same instance as speech-to-text) or headless coding assistants with free models (Claude Code with Haiku, OpenCode with GLM-4, Grok Fast).
 
 **Acceptance Criteria**:
 - [ ] Punctuation (periods, commas, question marks) is added appropriately
@@ -89,10 +91,12 @@ Knowledge workers, writers, and anyone who frequently captures quick thoughts or
 **Priority**: P1
 
 ## Technical Constraints
-- Must use free speech-to-text solution (Web Speech API via Chromium/WebKit, or local Ollama model)
+- Must use local Ollama-based speech-to-text (e.g., Whisper model) to ensure offline reliability
 - No cloud service subscriptions or API costs
+- No dependency on network-based speech recognition (Web Speech API is explicitly excluded due to network reliability issues)
 - Must work as desktop app, with a very minimal always on top UI
 - Accuracy is prioritized—prefer solutions with good recognition quality over speed alone
+- Ollama must be installed and running locally as a prerequisite
 
 ## Out of Scope (v1)
 - Manual editing of transcribed text before copy
@@ -101,6 +105,7 @@ Knowledge workers, writers, and anyone who frequently captures quick thoughts or
 - Audio file export or save functionality
 - Integration with specific apps (Notion API, Slack API, etc.)
 - User accounts or cloud sync
+- Browser-based or cloud-based speech recognition (Web Speech API)
 
 ## UI Reference
 See minimal app preview for UI patterns and interactions. The recorder uses a centered circular microphone button with animated waveform bars, and transcribed text appears in a text area below the controls.
