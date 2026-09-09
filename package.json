@@ -23,8 +23,13 @@
     "transcription",
     "electron"
   ],
-  "author": "",
+  "author": "Mikel Martin",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikelm20/talkclip.git"
+  },
+  "homepage": "https://github.com/mikelm20/talkclip#readme",
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.0",
@@ -52,13 +57,20 @@
       "dist/**/*"
     ],
     "linux": {
-      "target": ["AppImage", "deb"]
+      "target": [
+        "AppImage",
+        "deb"
+      ]
     },
     "mac": {
-      "target": ["dmg"]
+      "target": [
+        "dmg"
+      ]
     },
     "win": {
-      "target": ["nsis"]
+      "target": [
+        "nsis"
+      ]
     }
   }
 }
