@@ -2,7 +2,7 @@
 
 Voice to clipboard in seconds. Press a global hotkey, speak, and the cleaned-up text is on your clipboard.
 
-This application was generated end to end by the [Nolan](https://github.com/mikelm20/nolan-v1) pipeline, and the git history shows the loop: fifteen `feat(spec): add product spec` commits by the `nolan-wizard` agent, one `feat: Implement TalkClip voice-to-clipboard desktop app` commit, a `feat(spec): add PO feedback - Recognition error: network` round, and finally `Merge code for idea` and `Merge spec for idea`. The product spec the agents worked from is kept at `.nolan/ideas/idea-19bd35fb0d6-0/spec.md`.
+TalkClip is the reference project for the [Nolan](https://github.com/mikelm20/nolan-v1) spec-to-code pipeline. The git history records the loop: fifteen `feat(spec): add product spec` commits, one `feat: Implement TalkClip voice-to-clipboard desktop app` commit, a `feat(spec): add PO feedback - Recognition error: network` round, and finally `Merge code for idea` and `Merge spec for idea`. The product spec is kept at `.nolan/ideas/idea-19bd35fb0d6-0/spec.md`.
 
 ## What it does
 
@@ -39,4 +39,4 @@ Speech recognition depends on the Chromium build inside Electron having a speech
 
 ## Status
 
-A working prototype and a test fixture for Nolan. Not maintained.
+A working prototype and the reference fixture for Nolan. Not maintained.
